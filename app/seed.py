@@ -1,4 +1,4 @@
-from app.models import Hero, Power
+from models import Hero, Power, hero_powers
 from random import choice
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

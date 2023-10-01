@@ -33,7 +33,7 @@ class hero_powers(db.Model):
     powers_id = db.column(db.Integer, db.ForeignKey('powers.id'))
     created_at = db.Column(db.DateTime, nullable=False, default= datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default= datetime.utcnow)
-    # Define the relationship to the Power model
-    power = db.relationship('Power', back_populates='hero_powers', lazy=True)
-    # Define the relationship to the Hero model
-    hero = db.relationship('Hero', back_populates='hero_powers', lazy=True)
+    # # Define the relationship to the Power model
+    # power = db.relationship('Power', back_populates='hero_powers', lazy=True)
+    # # Define the relationship to the Hero model
+    # hero = db.relationship('Hero', back_populates='hero_powers', lazy=True)
