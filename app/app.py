@@ -43,6 +43,23 @@ class Home(Resource):
     
 api.add_resource(Home, "/")
 
+class Heroes(Resource):
+    def get(self):
+        #quering the database to retrieve heroes
+        heroes = Hero.query.all()
+
+        # Converting the heroes to a list of dictionaries
+        heroes_data = [{
+            "id": hero.id, 
+            "name": hero.name, 
+            "super_name": hero.super_name
+            } for hero in heroes]
+
+        return jsonify(heroes_data)
+    
+
+api.add_resource(Heroes, "/heroes")
+
 
 
 
