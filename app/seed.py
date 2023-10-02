@@ -1,8 +1,3 @@
-# from models import Hero, Power, HeroPower
-# from random import choice
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-
 from models import db, Hero, Power, HeroPower
 from random import choice
 from app import create_app
