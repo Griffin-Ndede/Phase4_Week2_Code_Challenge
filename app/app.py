@@ -60,7 +60,21 @@ class Heroes(Resource):
 
 api.add_resource(Heroes, "/heroes")
 
+class HeroesById(Resource):
+    def get(self, id):
+        # retrieving the hero id from the database
+        hero = Hero.query.filter_by(id=id).first()
 
+        # converting the hero object to a dictionary
+        hero_info = {
+            "id":hero.id,
+            "name":hero.name,
+            "super_name":hero.super_name,
+        }
+        response = make_response(jsonify(hero_info),200)
+        
+        return response
+api.add_resource(HeroesById, "/heroes/<int:id>")
 
 
 if __name__ == '__main__':
