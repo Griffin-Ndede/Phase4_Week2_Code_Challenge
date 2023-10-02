@@ -76,6 +76,38 @@ class HeroesById(Resource):
         return response
 api.add_resource(HeroesById, "/heroes/<int:id>")
 
+class PowersById(Resource):
+    def get(self, id):
+        # retrieving powers by id
+        power = Power.query.filter_by(id=id).first()
 
+        # converting the power to object to a dictionary
+
+        power_data = {
+            "id": power.id,
+            "name": power.name,
+            "description": power.description,
+        }
+        response = make_response(jsonify(power_data), 200)
+
+        return response
+api.add_resource(PowersById, "/powers/<int:id>" )
+
+
+class Powers(Resource):
+    def get(self):
+        # retrieving powers by id
+        powers = Power.query.all()
+
+        # converting the power to object to a dictionary
+        power_data = [{
+            "id": powers.id,
+            "name": powers.name,
+            "description": powers.description,
+        } for powers in powers]
+
+        return jsonify(power_data)
+    
+api.add_resource(Powers, "/powers" )
 if __name__ == '__main__':
     app.run(port=5555)
